@@ -9,6 +9,14 @@ export default class Movie extends React.Component {
     };
   }
 
+  handleEditClick = e => {
+    // console.log(this.props)
+    e.preventDefault();
+    this.props.history.push(`/update-movie/${this.props.match.params.id}`);
+    // this.props.history.push(`/update_item/${match.params.id}`);
+  };
+
+
   componentDidMount() {
     this.fetchMovie(this.props.match.params.id);
   }
@@ -31,6 +39,9 @@ export default class Movie extends React.Component {
     addToSavedList(this.state.movie);
   };
 
+
+
+
   render() {
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
@@ -42,6 +53,7 @@ export default class Movie extends React.Component {
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
+        <div className="edit-button" onClick={this.handleEditClick}>Edit</div>
       </div>
     );
   }
