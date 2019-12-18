@@ -39,7 +39,9 @@ const UpdateMovie = props => {
 
         if (ev.target.name === 'stars') {
             const newMovieStars = movie.stars.slice();
+            console.log('newMovieStarsBefore', newMovieStars)
             newMovieStars[Number(ev.target.id)] = ev.target.value;
+            console.log('newMovieStarsafter', newMovieStars)
             setMovie({
                 ...movie,
                 'stars': newMovieStars
@@ -51,12 +53,14 @@ const UpdateMovie = props => {
                 // })
 
             });
+            console.log('movie after change', movie)
         }
-
-        setMovie({
-            ...movie,
-            [ev.target.name]: ev.target.value
-        });
+        else {
+            setMovie({
+                ...movie,
+                [ev.target.name]: ev.target.value
+            });
+        }
     };
 
 
@@ -113,7 +117,7 @@ const UpdateMovie = props => {
                 <input
                     type="string"
                     name="stars"
-                    id='1'
+                    id='0'
                     onChange={changeHandler}
                     placeholder="stars 1"
                     value={movie.stars[0]}
@@ -123,7 +127,7 @@ const UpdateMovie = props => {
                 <input
                     type="string"
                     name="stars"
-                    id='2'
+                    id='1'
                     onChange={changeHandler}
                     placeholder="stars 2"
                     value={movie.stars[1]}
@@ -133,7 +137,7 @@ const UpdateMovie = props => {
                 <input
                     type="string"
                     name="stars"
-                    id='3'
+                    id='2'
                     onChange={changeHandler}
                     placeholder="stars 2"
                     value={movie.stars[2]}
